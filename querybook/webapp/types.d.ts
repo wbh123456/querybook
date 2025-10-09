@@ -50,6 +50,10 @@ declare global {
             queryEngine: IQueryEngine
         ) => string;
 
+        CUSTOM_AI_BAR_BUTTONS?: {
+            renderer: () => React.ReactElement;
+        };
+
         /**
          * Possible values for automatic query limits.
          * Defaults from 10^1 to 10^5

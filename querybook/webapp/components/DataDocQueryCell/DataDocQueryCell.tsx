@@ -852,6 +852,9 @@ class DataDocQueryCellComponent extends React.PureComponent<IProps, IState> {
             <span className="p8">{this.dataCellTitle}</span>
         );
 
+        const customAiBarButtonRenderer =
+            window?.CUSTOM_AI_BAR_BUTTON?.renderer;
+
         return (
             <>
                 <div className="query-metadata">
@@ -895,18 +898,27 @@ class DataDocQueryCellComponent extends React.PureComponent<IProps, IState> {
                         {this.getAdditionalDropDownButtonDOM()}
                     </div>
                 </div>
-                {isAIFeatureEnabled() && isEditable && (
-                    <AICommandBar
-                        query={query}
-                        queryEngine={queryEngineById[this.engineId]}
-                        tablesInQuery={this.state.tableNamesInQuery}
-                        onUpdateQuery={this.handleChange}
-                        onFormatQuery={this.formatQuery.bind(this, {
-                            case: 'upper',
-                        })}
-                        ref={this.commandInputRef}
-                    />
-                )}
+                <div className="ai-row-wrapper">
+                    <div className="ai-row">
+                        {customAiBarButtonRenderer && (
+                            <div className="ai-bar-button">
+                                {customAiBarButtonRenderer()}
+                            </div>
+                        )}
+                        {isAIFeatureEnabled() && isEditable && (
+                            <AICommandBar
+                                query={query}
+                                queryEngine={queryEngineById[this.engineId]}
+                                tablesInQuery={this.state.tableNamesInQuery}
+                                onUpdateQuery={this.handleChange}
+                                onFormatQuery={this.formatQuery.bind(this, {
+                                    case: 'upper',
+                                })}
+                                ref={this.commandInputRef}
+                            />
+                        )}
+                    </div>
+                </div>
             </>
         );
     }

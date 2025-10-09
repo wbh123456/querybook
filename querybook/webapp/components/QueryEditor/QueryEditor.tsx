@@ -373,6 +373,7 @@ export const QueryEditor: React.FC<
                     fontSize: fontSize ?? undefined,
                 }}
             >
+                <div className="helix-layer" />
                 {floatButtons}
                 <CodeEditor
                     ref={editorRef}

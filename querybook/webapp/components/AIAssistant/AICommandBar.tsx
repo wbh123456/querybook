@@ -25,6 +25,7 @@ import { IResizableTextareaHandles } from 'ui/ResizableTextArea/ResizableTextAre
 import { StyledText } from 'ui/StyledText/StyledText';
 
 import './AICommandBar.scss';
+import { KeyMap } from 'lib/utils/keyboard';
 
 interface IQueryCellCommandBarProps {
     query: string;
@@ -196,7 +197,11 @@ export const AICommandBar: React.FC<IQueryCellCommandBarProps> = forwardRef(
         );
 
         return (
-            <div className="AICommandBar">
+            <div
+                className="AICommandBar"
+                aria-label={`Type @ to select a table. Type / to see more commands. Type ${KeyMap.aiCommandBar.openCommands.key} to reset the command.`}
+                data-balloon-pos="up-left"
+            >
                 {showPopupView && (
                     <>
                         {/* This is a workaround to hide the query cell controls when hovering */}

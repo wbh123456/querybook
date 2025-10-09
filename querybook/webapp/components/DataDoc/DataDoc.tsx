@@ -819,6 +819,27 @@ class DataDocComponent extends React.PureComponent<IProps, IState> {
         );
     }
 
+    // @bind
+    // public handleHelixUltraWriteToCell(event) {
+        // if (event.data && event.data.source === 'HELIX_ULTRA') {
+        //     console.log('Received command from extension:', event.data);
+
+        //     if (event.data.cellId !== this.state.focusedCellIndex) {
+        //         console.log('Update with content:', event.data.content);
+        //         console.log('Focused cell index:', this.state.focusedCellIndex);
+
+        //         const { updateCell } = this.getDataDocContextState();
+        //         const focusedCellIndex = 25;
+        //         const cell = this.props.dataDoc.dataDocCells.find(
+        //             (cell) => cell.id === focusedCellIndex
+        //         );
+        //         updateCell(cell.id, {
+        //             context: cell.context + event.data.content,
+        //         });
+        //     }
+        // }
+    // }
+
     public componentDidMount() {
         trackView(ComponentType.DATADOC_PAGE);
         this.autoFocusCell({}, this.props);

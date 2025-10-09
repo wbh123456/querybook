@@ -52,6 +52,20 @@
         }
     }
 
+    .ai-row {
+        display: flex;
+        align-items: center;
+        .ai-bar-button {
+            display: flex;
+            align-items: center;
+            margin-right: var(--margin-sm);
+        }
+
+        .AICommandBar {
+            flex: 1;
+        }
+    }
+
     .collapsed-query {
         color: var(--text-lightest);
         font-size: var(--med-text-size);
