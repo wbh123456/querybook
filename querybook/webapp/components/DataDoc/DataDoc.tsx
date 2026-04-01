@@ -29,7 +29,13 @@ import {
 } from 'const/datadoc';
 import { ISearchOptions, ISearchResult } from 'const/searchAndReplace';
 import { DataDocContext, IDataDocContextType } from 'context/DataDoc';
+import { useWebMCPTools } from 'hooks/useWebMCPTools';
 import { trackClick, trackView } from 'lib/analytics';
+
+const WebMCPToolsBridge: React.FC = () => {
+    useWebMCPTools(false);
+    return null;
+};
 import {
     deserializeCopyCommand,
     serializeCopyCommand,
@@ -824,6 +830,7 @@ class DataDocComponent extends React.PureComponent<IProps, IState> {
                 key="querybook-data-doc"
             >
                 <DataDocContext.Provider value={this.getDataDocContextState()}>
+                    <WebMCPToolsBridge />
                     <SearchAndReplace
                         getSearchResults={this.getSearchResults}
                         jumpToResult={this.jumpToResult}

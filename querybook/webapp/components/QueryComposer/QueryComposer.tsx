@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AICommandBar } from 'components/AIAssistant/AICommandBar';
+import { useWebMCPTools } from 'hooks/useWebMCPTools';
 import { DataDocTableSamplingInfo } from 'components/DataDocTableSamplingInfo/DataDocTableSamplingInfo';
 import { DataDocTemplateInfoButton } from 'components/DataDocTemplateButton/DataDocTemplateInfoButton';
 import { DataDocTemplateVarForm } from 'components/DataDocTemplateButton/DataDocTemplateVarForm';
@@ -425,6 +426,11 @@ const QueryComposer: React.FC = () => {
     );
     const dispatch: Dispatch = useDispatch();
     const { query, setQuery } = useQuery(dispatch, environmentId);
+    const queryAccessor = useMemo(
+        () => ({ query, setQuery }),
+        [query, setQuery]
+    );
+    useWebMCPTools(true, queryAccessor);
     const reduxQuery = useSelector(
         (state: IStoreState) => state.adhocQuery[environmentId]?.query ?? ''
     );
